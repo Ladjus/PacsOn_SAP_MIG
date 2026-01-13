@@ -29,7 +29,7 @@ WHERE kp.ForetagKod IN (6000, 9000, 9100, 9400, 9500)
 			,FtgNr
 		FROM fr
 		WHERE fr.ForetagKod IN (6000, 9000, 9100, 9400, 9500)
-			AND fr.q_SAP = '1'  --Endast företag som ska exporteras till SAP
+			AND fr.q_saps4 = '1'  --Endast fÃ¶retag som ska exporteras till SAP
 		)
 GROUP BY kp.ForetagKod
 	,kp.FtgNr
@@ -37,3 +37,4 @@ GROUP BY kp.ForetagKod
 ORDER BY kp.ForetagKod
 	,kp.FtgNr
 	,kp.FtgKontaktNr;
+
