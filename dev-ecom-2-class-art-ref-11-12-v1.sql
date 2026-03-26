@@ -9,6 +9,10 @@
 (3) Tab "Character Value Allocation": structure S_CLF_MAT_AUSP_CHAR.
 */
 
+/* Change log
+v.1: Initial version.
+*/
+
 -- (1) "Header" w structure S_CLF_MAT_KSSK_HEAD
 -- Class ART_REF: Article References
 SELECT
