@@ -1,21 +1,21 @@
 SELECT fr.ftgnr [Ftgnr]
-	,fr.ftgnamn [Företagsnamn]
+	,fr.ftgnamn [FÃ¶retagsnamn]
 	,fr.rowcreatedby [Skapad av]
 	,fr.rowcreateddt [Skapad datum]
 	,CASE 
 		WHEN kus.ftgnr IS NULL
 			THEN 'Nej'
 		ELSE 'Ja'
-		END [Är kund]
+		END [Ã„r kund]
 	,CASE 
 		WHEN le.ftgnr IS NULL
 			THEN 'Nej'
 		ELSE 'Ja'
-		END [Är leverantör]
+		END [Ã„r leverantÃ¶r]
 	,oh1.orddatumMax [Senaste order]
 	,oh2.orddatumMax [Senaste order med Lev.plats]
 	,ofh1.offertdatumMax [Senaste Offert]
-	,bh1.[Beställningsdatum MAX] [Senaste Beställning]
+	,bh1.[BestÃ¤llningsdatum MAX] [Senaste BestÃ¤llning]
 	,lr.[LevFaktDat MAX] AS [Senaste Levfaktura]
 	,CASE 
 		WHEN oh1.orddatumMax IS NULL
@@ -23,7 +23,7 @@ SELECT fr.ftgnr [Ftgnr]
 			AND ofh1.offertdatumMax IS NULL
 			THEN 'Nej'
 		ELSE 'Ja'
-		END [Har använts i order/offert]
+		END [Har anvÃ¤nts i order/offert]
 FROM fr WITH (READUNCOMMITTED)
 LEFT OUTER JOIN kus WITH (READUNCOMMITTED) ON kus.foretagkod = fr.foretagkod
 	AND kus.ftgnr = fr.ftgnr
@@ -58,7 +58,7 @@ LEFT OUTER JOIN (
 	AND ofh1.ftgnr = fr.ftgnr
 LEFT OUTER JOIN (
 	SELECT bh.foretagkod
-		,max(bh.regdat) [Beställningsdatum MAX]
+		,max(bh.regdat) [BestÃ¤llningsdatum MAX]
 		,bh.ftgnr
 	FROM bh WITH (READUNCOMMITTED)
 	GROUP BY bh.foretagkod
